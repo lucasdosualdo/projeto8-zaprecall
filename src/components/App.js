@@ -1,8 +1,17 @@
-import '../assets/css/style.css';
 import '../assets/css/reset.css';
+import '../assets/css/style.css';
+import InitialScreen from './InitialScreen';
+import Questions from './Questions';
+import React from 'react';
 
 export default function App () {
+    const [isClicked, setIsClicked] = React.useState(false);
     return (
-        <h1>inciando</h1>
-    )
+        <>
+           { (isClicked===false) ?
+            < InitialScreen setIsClicked = {setIsClicked}/> :
+            <Questions />
+        }
+        </>
+    )        
 }
