@@ -5,11 +5,11 @@ import Questions from './Questions';
 import React from 'react';
 
 export default function App () {
-    const [isClicked, setIsClicked] = React.useState(false);
+    const [clikedInitial, setClikedInitial] = React.useState(false);
     return (
         <>
-           { (isClicked===false) ?
-            < InitialScreen setIsClicked = {setIsClicked}/> :
+           { (clikedInitial===false) ?
+            < InitialScreen setClikedInitial = {setClikedInitial}/> :
             <Questions />
         }
         </>
