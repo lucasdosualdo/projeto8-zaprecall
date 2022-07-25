@@ -1,34 +1,9 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import turn from '../assets/images/setinha.png';
 import React from 'react';
+import Deck from "./Deck";
 
 export default function Questions() {
-    
-
-    return (
-        <>
-        <Header/>
-
-
-        < Deck /> 
-
-        
-        <Footer />
-        </>    
-    )
-}
-
-function Deck () {
-    const [clikedPlay, setClikedPlay] = React.useState(false);
-
-    const deck = [
-        "Pergunta 1",
-        "Pergunta 2",
-        "Pergunta 3",
-        "Pergunta 4"
-    ]
-
     const questions = [
         {
             question: 'O que é JSX?',
@@ -64,50 +39,40 @@ function Deck () {
         },      
     ]
 
-   const spread = [...questions];
-   const sort = spread.sort(()=>Math.random() - 0.5);
+   let sortQuestions = questions.map(value =>{
+    return {
+        ...value,
+        tap: false
+    }
+   })
+   
+    sortQuestions = sortQuestions.sort(()=>Math.random() - 0.5);
+    console.log(sortQuestions);
 
-   const questionDeck = [];
+   let questionDeck = [];
    for (let i = 0; i < 4 ; i++) {
-    questionDeck.push(sort[i]);
+    questionDeck.push(sortQuestions[i]);
    }
+   questionDeck = questionDeck.map((value, index)=> {
+    return {
+        ...value,
+        index: {index},
+        title: `Pergunta ${index+1}`
+    }
+   })
 
    console.log(questionDeck);
-
-   function CardClosed () {
     return (
         <>
-        {deck.map((flashcard) =>(
-            <div className = 'flashcard-closed' >
-                <h4>{flashcard}</h4>
-                <ion-icon onClick = {()=>setClikedPlay(true)} name="play-outline" ></ion-icon>
-            </div>
-        ))}
-        </>     
-    )
-   }
-
-   function OpenCard () {
-    return (
-        <div className = 'flashcard-open'>
-            {questionDeck.map((value) => (
-                <h3>{value.question}</h3>
-            ))}
-            <img src = {turn} />
-        </div>
-    )
-    }
-
-    return (
-        <>
-        {(clikedPlay===false) ?
-        <CardClosed /> :
-        <OpenCard />
-        }
-        </>
-        
+        <Header/>
+        < Deck 
+        questionDeck = {questionDeck}
+        /> 
+        <Footer />
+        </>    
     )
 }
+
 
 
 
