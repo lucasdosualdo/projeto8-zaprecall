@@ -68,13 +68,14 @@ export default function Deck ({questionDeck}) {
             ))}
             <Footer>
                 <FinalResult valueQuestions={valueQuestions}/>
-                { valueQuestions.map(value => {
+                <h3>{counter}/4 CONCLUÍDOS</h3>
+                <div>
+                    { valueQuestions.map(value => {
                     if (value !== 'notyet') {
                         return <IconSituation situation={value} />
                     }
                 })}
-                <h3>{counter}/4 CONCLUÍDOS</h3>
-
+                </div>
             </Footer>
         </>  
     )

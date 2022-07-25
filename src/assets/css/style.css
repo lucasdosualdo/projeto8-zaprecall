@@ -33,12 +33,18 @@ h3 {
     font-family: 'Recursive';
     font-weight: 400;
     font-size: 18px;
+    margin-top: 10px;
 }
 
 h4 {
     font-family: 'Recursive';
     font-weight: 700;
     font-size: 16px;
+}
+
+ion-icon {
+    width: 25px;
+    height: 25px;
 }
 
 .root {
@@ -94,12 +100,15 @@ h4 {
 
 .footer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 70px;
+    min-height: 70px;
+    max-height: 700px;
     background-color: #FFFFFF;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    padding: 10px 0;
 }
 
 .flashcard-closed {
@@ -115,11 +124,18 @@ h4 {
     margin-bottom: 20px;
 }
 
-.flashcard-closed ion-icon {
-    width: 25px;
-    height: 25px;
+.wrong {
+    color: #FF3030;
+    text-decoration: line-through;
 }
-
+.almost {
+    color: #FF922E;
+    text-decoration: line-through;
+}
+.right {
+    color: #2FBE34;
+    text-decoration: line-through;
+}
 
 
 .flashcard-open {
@@ -129,7 +145,7 @@ h4 {
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     margin-bottom: 20px;
-    padding: 10px 15px 5px 15px;
+    padding: 0 15px 5px 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

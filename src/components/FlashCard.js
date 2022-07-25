@@ -25,7 +25,7 @@ export default function FlashCard ({index, turnCard, tap, question, answer, titl
     
     function CardClosed ({title, turnCard, index, situation}) {
         return (
-                <div className = 'flashcard-closed' onClick = {()=>turnCard(index)}>
+                <div className ={`flashcard-closed ${situation}`} onClick = {()=>turnCard(index)}>
                     <h4>{title}</h4>
                     <IconSituation situation ={situation}/>
                 </div>

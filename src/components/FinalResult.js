@@ -14,12 +14,12 @@ export default function FinalResult ({valueQuestions}) {
         return (
             <>
                 {result ? (<>
-                        <p>😥<strong>Putz...</strong></p>
-                        <p>Ainda faltam alguns...</p>
-                        <p>Mas não desanime!</p>
+                        <h3>😥<strong>Putz...</strong></h3>
+                        <h3>Ainda faltam alguns...</h3>
+                        <h3>Mas não desanime!</h3>
                 </>) : (<>
-                        <p>🥳<strong>Parabêns!</strong></p>
-                        <p>Você não esqueceu de nenhum flashcard!</p>
+                        <h3>🥳<strong>Parabêns!</strong></h3>
+                        <h3>Você não esqueceu de nenhum flashcard!</h3>
                     </>)}
             </>
         )
