@@ -1,4 +1,5 @@
 import turn from '../assets/images/setinha.png';
+import React from 'react';
 
 export default function FlashCard ({index, turnCard, tap, question, answer, title}) {
     return (
@@ -27,11 +28,25 @@ export default function FlashCard ({index, turnCard, tap, question, answer, titl
         )
        }
     
-    function OpenCard ({question}) {
+    function OpenCard ({question, answer}) {
+        const [turned, setTurned] = React.useState(false);
         return (
+        <>
+        {!turned ? (
             <div className = 'flashcard-open'>
                 <h3>{question}</h3>
-                <img src = {turn} />
+                <img src = {turn} onClick = {()=>setTurned(true)}/>
             </div>
+        ) : (
+            <div className = 'flashcard-open'>
+                <h3>{answer}</h3>
+                <div className='options'>
+                    <div className='naoLembrei'><p>Não lembrei</p></div>
+                    <div className='quaseNaoLembrei'><p>Quase não lembrei</p></div>
+                    <div className='zap'><p>Zap!</p></div>
+                </div>
+            </div>
+        )}
+        </>       
         )
     }
