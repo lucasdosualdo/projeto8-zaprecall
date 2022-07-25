@@ -1,7 +1,8 @@
 import turn from '../assets/images/setinha.png';
 import React from 'react';
+import IconSituation from './IconSituation';
 
-export default function FlashCard ({index, turnCard, tap, question, answer, title}) {
+export default function FlashCard ({index, turnCard, tap, question, answer, title, situation, chooseSituation}) {
     return (
        <>
        { !tap? 
@@ -9,26 +10,29 @@ export default function FlashCard ({index, turnCard, tap, question, answer, titl
         index = {index}
         turnCard = {turnCard}
         title = {title}
+        situation = {situation}
         />) : (
         <OpenCard
         question={question}
         answer = {answer}
+        chooseSituation = {chooseSituation}
+        index = {index}
         />)
        }
        </>
     )
     }
     
-    function CardClosed ({title, turnCard, index}) {
+    function CardClosed ({title, turnCard, index, situation}) {
         return (
-                <div className = 'flashcard-closed'>
+                <div className = 'flashcard-closed' onClick = {()=>turnCard(index)}>
                     <h4>{title}</h4>
-                    <ion-icon onClick = {()=>turnCard(index)} name="play-outline" ></ion-icon>
+                    <IconSituation situation ={situation}/>
                 </div>
         )
        }
     
-    function OpenCard ({question, answer}) {
+    function OpenCard ({question, answer, chooseSituation, index}) {
         const [turned, setTurned] = React.useState(false);
         return (
         <>
@@ -41,12 +45,19 @@ export default function FlashCard ({index, turnCard, tap, question, answer, titl
             <div className = 'flashcard-open'>
                 <h3>{answer}</h3>
                 <div className='options'>
-                    <div className='naoLembrei'><p>Não lembrei</p></div>
-                    <div className='quaseNaoLembrei'><p>Quase não lembrei</p></div>
-                    <div className='zap'><p>Zap!</p></div>
+                    <div className='naoLembrei' onClick = {() => chooseSituation(index, 'wrong')}>
+                        <p>Não lembrei</p>
+                    </div>
+                    <div className='quaseNaoLembrei' onClick = {() => chooseSituation(index, 'almost')}>
+                        <p>Quase não lembrei</p>
+                    </div>
+                    <div className='zap' onClick = {() => chooseSituation(index, 'right')}>
+                        <p>Zap!</p>
+                    </div>
                 </div>
             </div>
         )}
         </>       
         )
     }
+

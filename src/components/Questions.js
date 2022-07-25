@@ -1,5 +1,3 @@
-import Header from "./Header";
-import Footer from "./Footer";
 import React from 'react';
 import Deck from "./Deck";
 
@@ -57,19 +55,16 @@ export default function Questions() {
     return {
         ...value,
         index: {index},
-        title: `Pergunta ${index+1}`
+        title: `Pergunta ${index+1}`,
+        situation: 'notyet'
     }
    })
 
    console.log(questionDeck);
     return (
-        <>
-        <Header/>
         < Deck 
         questionDeck = {questionDeck}
-        /> 
-        <Footer />
-        </>    
+        />     
     )
 }
 
