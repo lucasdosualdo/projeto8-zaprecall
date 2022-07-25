@@ -24,12 +24,21 @@ export default function FlashCard ({index, turnCard, tap, question, answer, titl
     }
     
     function CardClosed ({title, turnCard, index, situation}) {
-        return (
+        if (situation ==='notyet') {
+            return (
                 <div className ={`flashcard-closed ${situation}`} onClick = {()=>turnCard(index)}>
                     <h4>{title}</h4>
                     <IconSituation situation ={situation}/>
                 </div>
-        )
+            )
+        } else {
+            return (
+                <div className ={`flashcard-closed ${situation}`}>
+                    <h4>{title}</h4>
+                    <IconSituation situation ={situation}/>
+                </div>
+            )
+        }
        }
     
     function OpenCard ({question, answer, chooseSituation, index}) {
@@ -60,4 +69,6 @@ export default function FlashCard ({index, turnCard, tap, question, answer, titl
         </>       
         )
     }
+
+
 
